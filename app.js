@@ -9,7 +9,16 @@ Genre = require('./models/geners');
 Games = require('./models/games');
 
 //Connect to Mongoose
-mongoose.connect('mongodb://52.53.224.169:27017/gamecart');
+//mongoose.connect('mongodb://52.53.224.169:27017/gamecart');
+
+mongoose.connect('mongodb://52.53.224.169:27017,54.215.133.213:27017,54.183.251.6:27017,/gamecart', {
+  "db": {
+"readPreference": "secondaryPreferred"
+},
+"replset": {
+"rs_name": "rs0"
+}
+});
 
 var db = mongoose.connection
 
